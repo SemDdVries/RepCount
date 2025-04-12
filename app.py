@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import os
 import json
+import ssl
 from werkzeug.security import generate_password_hash, check_password_hash
 import secrets
 from datetime import timedelta
@@ -123,9 +124,51 @@ def dashboard():
     
     return render_template('dashboard.html', username=username, user_data=user_data)
 
+@app.route('/toggle-theme')
+def toggle_theme():
+    """Toggle between light and dark theme"""
+    current_theme = session.get('theme')
+    if current_theme == 'dark':
+        session['theme'] = 'light'
+    else:
+        session['theme'] = 'dark'
+    
+    # Redirect back to the current page
+    current_page = request.args.get('current_page', '/')
+    return redirect(current_page)
+
+def create_ssl_context():
+    """Create SSL context with self-signed certificate if certificates don't exist"""
+    cert_dir = 'ssl'
+    cert_file = os.path.join(cert_dir, 'cert.pem')
+    key_file = os.path.join(cert_dir, 'key.pem')
+    
+    # Create certificate directory if it doesn't exist
+    if not os.path.exists(cert_dir):
+        os.makedirs(cert_dir)
+    
+    # Generate self-signed certificate if it doesn't exist
+    if not (os.path.exists(cert_file) and os.path.exists(key_file)):
+        print("Generating self-signed SSL certificate...")
+        os.system(f'openssl req -x509 -newkey rsa:4096 -nodes -out {cert_file} -keyout {key_file} '
+                  f'-days 365 -subj "/CN=localhost"')
+    
+    # Create SSL context
+    context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+    context.load_cert_chain(cert_file, key_file)
+    return context
+
 if __name__ == '__main__':
     # Make sure templates folder exists
     if not os.path.exists('templates'):
         os.makedirs('templates')
     
-    app.run(debug=True) 
+    # Make sure static folder exists
+    if not os.path.exists('static'):
+        os.makedirs('static')
+    
+    # Get SSL context
+    ssl_context = create_ssl_context()
+    
+    # Run the app with HTTPS
+    app.run(debug=True, host='0.0.0.0', port=443, ssl_context=ssl_context) 

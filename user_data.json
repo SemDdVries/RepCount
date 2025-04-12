@@ -1,0 +1,12 @@
+{
+    "Sem de Vries": {
+        "password": "pbkdf2:sha256:600000$Mh1iEAfXIn7EDrEI$f0afb050b80a70b9d4e60e30056c8720ee2b1dd17502aa69fe3ada31c22b1f54",
+        "email": "semdinand@gmail.com",
+        "profile": {
+            "name": "",
+            "weight": "",
+            "height": "",
+            "goals": []
+        }
+    }
+}

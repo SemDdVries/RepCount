@@ -1,0 +1,133 @@
+:root {
+  /* Light mode variables (default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --accent-color: #0d6efd;
+  --accent-hover: #0b5ed7;
+  --border-color: #dee2e6;
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --alert-bg: #f8f9fa;
+}
+
+:root.dark-mode {
+  /* Dark mode variables with high contrast */
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #cccccc;
+  --accent-color: #4d94ff;
+  --accent-hover: #3a7bdb;
+  --border-color: #444444;
+  --card-bg: #2d2d2d;
+  --input-bg: #2d2d2d;
+  --input-border: #555555;
+  --alert-bg: #2d2d2d;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: var(--bg-secondary) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link {
+  color: var(--text-primary) !important;
+}
+
+.navbar-dark .navbar-toggler-icon {
+  filter: invert(var(--dark-mode-invert));
+}
+
+/* Card styling */
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.card-header {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+/* Form styling */
+.form-control, .form-select {
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-color: var(--input-border);
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+}
+
+.form-text {
+  color: var(--text-secondary);
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn-outline-secondary {
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary);
+}
+
+/* Alert styling */
+.alert {
+  background-color: var(--alert-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-toggle svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+} 
