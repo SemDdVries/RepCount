@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-4">Welcome to RepCount</h1>
+    <p class="lead">Track your gym progress and achieve your fitness goals</p>
+    <hr class="my-4">
+    <p>RepCount helps you track exercises, weight goals, reps, and sets to keep you on target with your fitness journey.</p>
+    <div class="mt-4">
+        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg me-2">Get Started</a>
+        <a href="{{ url_for('login') }}" class="btn btn-outline-secondary btn-lg">Login</a>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <h3 class="card-title">Track Workouts</h3>
+                <p class="card-text">Log your exercises, sets, reps, and weights to see your progress over time.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <h3 class="card-title">Set Goals</h3>
+                <p class="card-text">Define your fitness goals and track your journey towards achieving them.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <h3 class="card-title">Stay Motivated</h3>
+                <p class="card-text">See your progress visually and stay motivated to reach your fitness goals.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
