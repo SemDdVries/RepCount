@@ -1,0 +1,3 @@
+@echo off
+echo Setting up RepCount host entry (repcount.local)...
+python %~dp0setup_admin.py 

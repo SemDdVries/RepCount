@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2>Welcome, {{ username }}!</h2>
+        <p>This is your fitness tracking dashboard.</p>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Profile Information
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Your Profile</h5>
+                <p class="card-text">Update your personal information and fitness details.</p>
+                <a href="#" class="btn btn-primary">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Workout Tracker
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Track Your Workouts</h5>
+                <p class="card-text">Log your exercises, sets, and reps to track your progress.</p>
+                <a href="#" class="btn btn-primary">Start Tracking</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Fitness Goals
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Your Goals</h5>
+                <p class="card-text">Set and manage your fitness and weight goals.</p>
+                <a href="#" class="btn btn-primary">Manage Goals</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Recent Activity
+            </div>
+            <div class="card-body">
+                <p>No recent activities. Start tracking your workouts!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,3 @@
+@echo off
+echo Setting up RepCount application...
+scripts\admin\setup_hosts.bat 

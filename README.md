@@ -11,6 +11,59 @@ Make an application that tracks your gym progress, including exercises, weight (
 - **HTTPS Support**: Secure connection with SSL/TLS encryption
 - **Custom Hostname**: Easy access via a friendly domain name (repcount.local)
 
+## Project Structure
+
+```
+RepCount/
+├── app/                        # Main application package
+│   ├── __init__.py            # Application factory
+│   ├── config/                # Configuration modules
+│   │   └── ssl.py             # SSL configuration
+│   ├── models/                # Data models
+│   │   └── user.py            # User model
+│   ├── routes/                # Route definitions
+│   │   ├── auth.py            # Authentication routes
+│   │   └── main.py            # Main application routes
+│   ├── static/                # Static files (CSS, JS, images)
+│   │   └── css/
+│   │       └── styles.css     # Custom stylesheet
+│   └── templates/             # Jinja2 templates
+│       ├── base.html          # Base template
+│       ├── dashboard.html     # Dashboard template
+│       ├── index.html         # Homepage template
+│       ├── login.html         # Login template
+│       └── register.html      # Registration template
+│
+├── data/                      # Data storage
+│   └── user_data.json         # User data storage
+│
+├── scripts/                   # Utility scripts
+│   ├── admin/                 # Administrative scripts
+│   │   ├── setup_admin.py     # Admin privileges helper
+│   │   ├── setup_hosts.bat    # Windows hosts setup
+│   │   └── setup_hosts.py     # Hosts file configuration
+│   └── runners/               # Runner scripts
+│       ├── run_http.bat       # HTTP runner (Windows)
+│       ├── run_http.sh        # HTTP runner (Unix)
+│       ├── run_https.bat      # HTTPS runner (Windows)
+│       └── run_https.sh       # HTTPS runner (Unix)
+│
+├── ssl/                       # SSL certificates
+│   ├── cert.pem               # Certificate
+│   └── key.pem                # Private key
+│
+├── run.py                     # Main application runner
+├── dev.py                     # Development server
+├── setup.bat                  # Windows setup shortcut
+├── setup.sh                   # Unix setup shortcut
+├── run_http.bat               # Windows HTTP shortcut
+├── run_http.sh                # Unix HTTP shortcut
+├── run_https.bat              # Windows HTTPS shortcut
+├── run_https.sh               # Unix HTTPS shortcut
+├── requirements.txt           # Python dependencies
+└── README.md                  # Project documentation
+```
+
 ## Technical Details
 
 The application is built using:
@@ -26,44 +79,26 @@ The application is built using:
 1. Clone the repository
 2. Install the required packages:
    ```
-   pip install flask
+   pip install -r requirements.txt
    ```
 3. (Optional but recommended) Set up a custom hostname for easier access:
-   - Windows: Run `setup_hosts.py` as administrator
-   - Linux/Mac: Run `sudo python setup_hosts.py`
+   - **Windows**: Double-click `setup.bat`
+   - **Linux/Mac**: Run `chmod +x setup.sh && ./setup.sh`
 
 4. Start the application:
    - **Windows**: 
-     - Double-click `run_app.bat` for HTTPS mode (port 443)
-     - Double-click `run_app_http.bat` for HTTP mode (port 5000)
+     - Double-click `run_https.bat` for HTTPS mode (port 443)
+     - Double-click `run_http.bat` for HTTP mode (port 5000)
    - **Linux/Mac**: 
-     - Run `chmod +x run_app.sh run_app_http.sh` to make scripts executable
-     - Run `./run_app.sh` for HTTPS mode (port 443)
-     - Run `./run_app_http.sh` for HTTP mode (port 5000)
+     - Run `chmod +x run_https.sh run_http.sh`
+     - Run `./run_https.sh` for HTTPS mode (port 443)
+     - Run `./run_http.sh` for HTTP mode (port 5000)
 
 5. Access the application:
    - HTTPS mode: `https://repcount.local` (no port needed) or `https://localhost:443`
    - HTTP mode: `http://repcount.local:5000` or `http://localhost:5000`
 
 **Note**: When accessing the app via HTTPS, you'll need to accept the security warning in your browser since we're using a self-signed certificate.
-
-## Advanced Usage
-
-You can run the application with custom settings using the `run.py` script:
-
-```
-# Run with HTTPS on the default port (443)
-python run.py
-
-# Run with HTTP on the default port (5000)
-python run.py --http
-
-# Run with HTTPS on a custom port
-python run.py --port=8443
-
-# Run with HTTP on a custom port
-python run.py --http --port=8080
-```
 
 ## Security
 
